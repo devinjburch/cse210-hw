@@ -4,6 +4,11 @@ class Program
 {
     static void Main()
     {
+        //Display a quote of the day from Red Rising!
+        Quote quote = new Quote();
+        quote.DisplayQuote();
+
+
         // Create a new journal
         Journal journal = new Journal();
 
