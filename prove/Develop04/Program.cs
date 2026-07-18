@@ -1,5 +1,10 @@
 using System;
 
+//CREATIVITY:
+// To show creativity I made it so the Reflecting Activity will not repeat a prompt
+// I also replaced the spinner animation with a face going from stressed to relieved/happy
+
+
 class Program
 {
     static void Main(string[] args)

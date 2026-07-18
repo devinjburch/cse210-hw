@@ -6,6 +6,7 @@ public class ReflectionActivity : Activity
 {
     private List<string> _prompts;
     private List<string> _questions;
+    private List<string> _unusedQuestions;
     private Random _random;
 
 
@@ -16,7 +17,7 @@ public class ReflectionActivity : Activity
     {
         _random = new Random(); //Create a random object
 
-        //my list of prompts
+                //my list of prompts
         _prompts = new List<string> 
         {
             "Think of a time when you stood up for someone else.",
@@ -33,6 +34,9 @@ public class ReflectionActivity : Activity
             "What did you learn about yourself?",
             "How can this experience help you in the future?"
         };
+    
+        _unusedQuestions = new List<string>(_questions);
+
     }
 
 
@@ -80,7 +84,7 @@ public class ReflectionActivity : Activity
                 $"> {GetRandomQuestion()} "
             );
 
-            ShowSpinner(5); //loading screen spinner for 5 seconds
+            Thread.Sleep(4000); //let the user think for 4 seconds
 
             Console.WriteLine();
         }
@@ -103,11 +107,22 @@ public class ReflectionActivity : Activity
 
 
 
-    //method to choose a question at random
+    //method to choose a question at random but not repeat
     private string GetRandomQuestion()
     {
-        int index = _random.Next(_questions.Count);
+        //Add all the questions back after all are used
+        if (_unusedQuestions.Count == 0)
+        {
+            _unusedQuestions = new List<string>(_questions);
+        }
 
-        return _questions[index];
+        int index = _random.Next(_unusedQuestions.Count); 
+
+        string question = _unusedQuestions[index];
+
+        //remove the question that was used
+        _unusedQuestions.RemoveAt(index);
+
+        return question;
     }
 }
