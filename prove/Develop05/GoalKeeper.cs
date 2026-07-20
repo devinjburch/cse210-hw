@@ -135,7 +135,7 @@ public class GoalKeeper
 
 
 
-    //Method to record the user's progress
+    //Method to record the user's progress - Keep Track of Leveling Up
     private void RecordEvent()
     {
         Console.WriteLine("\nYour goals: "); //Display just the names of the goals numbered
@@ -152,16 +152,29 @@ public class GoalKeeper
 
         int number = int.Parse(Console.ReadLine()) - 1; //Save users number choice -1 because of engineers
 
+        int oldLevel = GetLevel();
+
         //Using POLYMORPHISM run RecordEvent depending on the goal type
         int pointsEarned = _goals[number].RecordEvent(); 
 
         _score += pointsEarned; //Add the users new points to the grand total
 
+        int newLevel = GetLevel();
+
         //Tell the user their new score total
         Console.WriteLine($"Good Job, You Earned {pointsEarned} Points!");
         Console.WriteLine($"Your New Total: {_score} Points.");
         Console.WriteLine($"You Are Level {GetLevel()}.");
+
+        
+        
+        //If the player levels up, inform them
+        if (newLevel > oldLevel)
+        {
+            Console.WriteLine($"LEVEL UP! You Are Now Level {newLevel}!");
+        }
     }
+    
 
 
 
