@@ -1,5 +1,12 @@
 using System;
 using System.Collections.Generic;
+//*******************************************************************************************
+//This Final Project is a fleet battle simulator. Two fleets will face off and the user will 
+//enjoy watching as the fleets exchange ordinace. Only one fleet will remain. This Project 
+//is to demonstrate several programming principles such as Abstraction, Encapsulation, 
+//Inheritance and Polymorphism
+//*******************************************************************************************
+
 
 class Program
 {
